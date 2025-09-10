@@ -18,7 +18,7 @@ class MainController extends AbstractController
         $myShip = $ships[array_rand($ships)];
 
         return $this->render(
-            'homepage.html.twig',
+            '/main/homepage.html.twig',
             [
                 //'contador' => $starshipCount,
                 'myShip' => $myShip,
