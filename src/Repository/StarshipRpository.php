@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Model\Starship;
+use App\Model\StarshipStatusEnum;
 use Psr\Log\LoggerInterface;
 
 class StarshipRpository
@@ -21,7 +22,7 @@ class StarshipRpository
                 'USS LeafyCruiser (NCC-0001)',
                 'Garden',
                 'Jean-Luc Pickles',
-                'taken over by Q',
+                StarshipStatusEnum: IN_PROGRESS,
 
             ),
             new Starship(
