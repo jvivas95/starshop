@@ -22,7 +22,7 @@ class StarshipRpository
                 'USS LeafyCruiser (NCC-0001)',
                 'Garden',
                 'Jean-Luc Pickles',
-                StarshipStatusEnum: IN_PROGRESS,
+                StarshipStatusEnum::IN_PROGRESS,
 
             ),
             new Starship(
@@ -30,14 +30,14 @@ class StarshipRpository
                 'USS Espresso (NCC-1234-C)',
                 'Latte',
                 'James T. Quick!',
-                'repaired',
+                StarshipStatusEnum::COMPLETED,
             ),
             new Starship(
                 3,
                 'USS Wanderlust (NCC-2024-W)',
                 'Delta Tourist',
                 'Kathryn Journeyway',
-                'under construction',
+                StarshipStatusEnum::WAITING,
             ),
 
         ];
