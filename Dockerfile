@@ -15,6 +15,15 @@ RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|g' /e
 # Da permisos a la carpeta var
 RUN mkdir -p /var/www/html/var && chown -R www-data:www-data /var/www/html/var
 
+# Instala utilidades necesarias para Composer y Symfony
+RUN apt-get update && apt-get install -y \
+    git \
+    unzip \
+    zip
+
+# Instala la extensión zip de PHP
+RUN docker-php-ext-install zip
+
 # Instala Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
