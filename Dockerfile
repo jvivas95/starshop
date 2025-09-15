@@ -9,6 +9,9 @@ RUN a2enmod rewrite
 # Copia el código fuente al contenedor
 COPY . /var/www/html/
 
+# Ajusta permisos de toda la aplicación
+RUN chown -R www-data:www-data /var/www/html
+
 # Cambia el DocumentRoot a /var/www/html/public
 RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|g' /etc/apache2/sites-available/000-default.conf
 
