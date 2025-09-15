@@ -13,7 +13,7 @@ COPY . /var/www/html/
 RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|g' /etc/apache2/sites-available/000-default.conf
 
 # Da permisos a la carpeta var
-RUN chown -R www-data:www-data /var/www/html/var
+RUN mkdir -p /var/www/html/var && chown -R www-data:www-data /var/www/html/var
 
 # Instala Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
