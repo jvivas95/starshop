@@ -1,0 +1,34 @@
+# Use the front controller as index file. It serves as a fallback solution when
+# every other rewrite/redirect fails (e.g. in an aliased environment without
+# mod_rewrite). Additionally, this reduces the matching process for the
+# start page (path "/").
+DirectoryIndex index.php
+
+# By default, deny access to hidden files and directories.
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# Deny access to files that don't need to be accessed directly.
+<FilesMatch "\.(yml|yaml|twig|ht|xml|json|lock|git|md|dist|bak|php[3457]?|phtml|phps|ini|sh|bat|ps1|log|sql|sqlite|env)$">
+    Require all denied
+</FilesMatch>
+
+# Enable URL rewriting.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Redirect to HTTPS if needed (optional)
+    # RewriteCond %{HTTPS} off
+    # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # If the requested filename exists, serve it directly.
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ - [L]
+
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Otherwise, forward to index.php.
+    RewriteRule ^ index.php [L]
+</IfModule>
